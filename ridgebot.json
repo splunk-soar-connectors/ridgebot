@@ -1,0 +1,465 @@
+{
+    "appid": "72905f43-e6ea-4a04-bfea-7edf817a6705",
+    "name": "RidgeBot",
+    "description": "Support RidgeBot Task Creation and Result Retrieval",
+    "type": "devops",
+    "product_vendor": "RidgeSecurity",
+    "logo": "ridgebot.png",
+    "logo_dark": "ridgebot_dark.png",
+    "product_name": "RidgeBot",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "RidgeSecurity",
+    "license": "Copyright (c) RidgeSecurity, 2022",
+    "app_version": "1.0.0",
+    "utctime_updated": "2022-01-24T23:30:20.914104Z",
+    "package_name": "phantom_ridgebot",
+    "main_module": "ridgebot_connector.py",
+    "min_phantom_version": "5.0.1.66250",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "base_url": {
+            "description": "API Base URL",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 0
+        },
+        "auth_token": {
+            "description": "User Token for API execution",
+            "data_type": "password",
+            "required": true,
+            "order": 1
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "createtask",
+            "identifier": "createtask",
+            "description": "Create Task",
+            "verbose": "Create Penetration task",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "name": {
+                    "description": "task name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "targets": {
+                    "description": "task target list",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "template_id": {
+                    "description": "template id",
+                    "data_type": "numeric",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "task_id": {
+                    "description": "return value of the request",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.targets",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "targets",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.template_id",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "column_name": "template_id",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "input_task_id",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.data.task_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "task_id",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "gettaskstatistics",
+            "identifier": "gettaskstatistics",
+            "description": "Get Task Result with Attack Surface, Vulnerablity and Risk Statistics",
+            "verbose": "get task summary",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "task_id": {
+                    "description": "task id",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "task_id",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.data.risk.risk_number",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "Total Risk#",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.data.vul.vul_number",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "Total Vul#",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.data.vul.vul_high",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "Total High Vul#",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.data.vul.vul_middle",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "Total Medium Vul#",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.data.security_module.safety_index",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "Safety_index",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "stoptask",
+            "identifier": "stoptask",
+            "description": "Stop a unfinished task",
+            "verbose": "stop task",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "task_id": {
+                    "description": "task id",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "gettaskinfo",
+            "identifier": "gettaskinfo",
+            "description": "Get Task Info Lists for Single Task",
+            "verbose": "Get task info lists",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "task_id": {
+                    "description": "task id",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "gettaskinfolists",
+            "identifier": "gettaskinfolists",
+            "description": "Get Task Info Lists",
+            "verbose": "Get task info lists",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "generatedownloadreport",
+            "identifier": "generatedownloadreport",
+            "description": "Generate and Download Report with Task ID",
+            "verbose": "Generate and Download Report",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "task_id": {
+                    "description": "task id",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "type": {
+                    "description": "report type",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "report_name": {
+                    "description": "report name",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.type",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "targets",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.report_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "input_task_id",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
