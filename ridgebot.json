@@ -4,8 +4,8 @@
     "description": "Support RidgeBot Task Creation and Result Retrieval",
     "type": "devops",
     "product_vendor": "RidgeSecurity",
-    "logo": "ridgebot.png",
-    "logo_dark": "ridgebot_dark.png",
+    "logo": "ridgebot.svg",
+    "logo_dark": "ridgebot_dark.svg",
     "product_name": "RidgeBot",
     "python_version": "3",
     "product_version_regex": ".*",
@@ -15,7 +15,7 @@
     "utctime_updated": "2022-01-24T23:30:20.914104Z",
     "package_name": "phantom_ridgebot",
     "main_module": "ridgebot_connector.py",
-    "min_phantom_version": "5.0.1.66250",
+    "min_phantom_version": "5.1.0",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "base_url": {
@@ -46,15 +46,15 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "createtask",
+            "action": "create task",
             "identifier": "createtask",
             "description": "Create Task",
-            "verbose": "Create Penetration task",
+            "verbose": "Create Penetration task.",
             "type": "generic",
             "read_only": false,
             "parameters": {
                 "name": {
-                    "description": "task name",
+                    "description": "Task Name",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -64,7 +64,7 @@
                     "order": 0
                 },
                 "targets": {
-                    "description": "task target list",
+                    "description": "Task Target List",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -74,7 +74,7 @@
                     "order": 1
                 },
                 "template_id": {
-                    "description": "template id",
+                    "description": "Template Id",
                     "data_type": "numeric",
                     "required": true,
                     "primary": false,
@@ -82,16 +82,6 @@
                     "value_list": [],
                     "default": "",
                     "order": 2
-                },
-                "task_id": {
-                    "description": "return value of the request",
-                    "data_type": "string",
-                    "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 3
                 }
             },
             "output": [
@@ -117,24 +107,17 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.parameter.task_id",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "input_task_id",
-                    "column_order": 3
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
-                    "column_order": 4
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.data.task_id",
                     "data_type": "string",
                     "contains": [],
                     "column_name": "task_id",
-                    "column_order": 5
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.message",
@@ -155,15 +138,15 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "gettaskstatistics",
+            "action": "get task statistics",
             "identifier": "gettaskstatistics",
             "description": "Get Task Result with Attack Surface, Vulnerablity and Risk Statistics",
-            "verbose": "get task summary",
+            "verbose": "Get Task Statistics.",
             "type": "generic",
             "read_only": false,
             "parameters": {
                 "task_id": {
-                    "description": "task id",
+                    "description": "Task Id",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -179,50 +162,50 @@
                     "data_type": "string",
                     "contains": [],
                     "column_name": "task_id",
-                    "column_order": 1
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.data.risk.risk_number",
                     "data_type": "string",
                     "contains": [],
                     "column_name": "Total Risk#",
-                    "column_order": 2
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.data.*.data.vul.vul_number",
                     "data_type": "string",
                     "contains": [],
                     "column_name": "Total Vul#",
-                    "column_order": 3
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data.*.data.vul.vul_high",
                     "data_type": "string",
                     "contains": [],
                     "column_name": "Total High Vul#",
-                    "column_order": 4
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.data.vul.vul_middle",
                     "data_type": "string",
                     "contains": [],
                     "column_name": "Total Medium Vul#",
-                    "column_order": 5
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.data.*.data.security_module.safety_index",
                     "data_type": "string",
                     "contains": [],
                     "column_name": "Safety_index",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
                     "column_order": 6
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 7
-                },
-                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 },
@@ -241,15 +224,15 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "stoptask",
+            "action": "stop task",
             "identifier": "stoptask",
             "description": "Stop a unfinished task",
-            "verbose": "stop task",
+            "verbose": "Stop a unfinished Task.",
             "type": "generic",
             "read_only": false,
             "parameters": {
                 "task_id": {
-                    "description": "task id",
+                    "description": "Task Id",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -292,15 +275,15 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "gettaskinfo",
+            "action": "get task info",
             "identifier": "gettaskinfo",
-            "description": "Get Task Info Lists for Single Task",
-            "verbose": "Get task info lists",
+            "description": "Get Task Info for a Task",
+            "verbose": "Get Task Info for a Task.",
             "type": "generic",
             "read_only": false,
             "parameters": {
                 "task_id": {
-                    "description": "task id",
+                    "description": "Task Id",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -343,10 +326,10 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "gettaskinfolists",
+            "action": "get task info lists",
             "identifier": "gettaskinfolists",
             "description": "Get Task Info Lists",
-            "verbose": "Get task info lists",
+            "verbose": "Get task info lists.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -377,7 +360,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "generatedownloadreport",
+            "action": "generate and download report",
             "identifier": "generatedownloadreport",
             "description": "Generate and Download Report with Task ID",
             "verbose": "Generate and Download Report",
@@ -385,7 +368,7 @@
             "read_only": false,
             "parameters": {
                 "task_id": {
-                    "description": "task id",
+                    "description": "Task Id",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -395,7 +378,7 @@
                     "order": 0
                 },
                 "type": {
-                    "description": "report type",
+                    "description": "Report Type",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
@@ -405,14 +388,14 @@
                     "order": 1
                 },
                 "report_name": {
-                    "description": "report name",
+                    "description": "Report Name",
                     "data_type": "string",
-                    "required": false,
+                    "required": true,
                     "primary": false,
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 3
+                    "order": 2
                 }
             },
             "output": [

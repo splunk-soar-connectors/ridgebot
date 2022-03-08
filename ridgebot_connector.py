@@ -1,9 +1,18 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-# -----------------------------------------
-# Phantom sample App Connector python file
-# -----------------------------------------
-
+# File: ridgebot_connector.py
+#
+# Copyright (c) RidgeSecurity, 2022-2023
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
+#
 # Python 3 Compatibility imports
 from __future__ import print_function, unicode_literals
 
@@ -179,7 +188,7 @@ class RidgebotConnector(BaseConnector):
             return action_result.get_status()
 
         # Return success
-        self.save_progress("Test Connectivity Passed")
+        self.send_progress("Test Connectivity Passed")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_createtask(self, param):
@@ -212,7 +221,7 @@ class RidgebotConnector(BaseConnector):
 
         # Return success, no need to set the message, only the status
         # BaseConnector will create a textual message based off of the summary dictionary
-        self.save_progress("Task Created Successfully")
+        self.send_progress("Task Created Successfully")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_stoptask(self, param):
@@ -240,7 +249,7 @@ class RidgebotConnector(BaseConnector):
         action_result.update_summary({'Stop Task': response['message']['key']})
         # Return success, no need to set the message, only the status
 
-        self.save_progress("Task Stopped Successfully")
+        self.send_progress("Task Stopped Successfully")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_gettaskinfo(self, param):
@@ -284,7 +293,7 @@ class RidgebotConnector(BaseConnector):
 
         # Return success, no need to set the message, only the status
         # BaseConnector will create a textual message based off of the summary dictionary
-        self.save_progress("Get Task Info Successfully")
+        self.send_progress("Get Task Info Successfully")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_gettaskinfolists(self, param):
@@ -310,7 +319,7 @@ class RidgebotConnector(BaseConnector):
 
         # Return success, no need to set the message, only the status
         # BaseConnector will create a textual message based off of the summary dictionary
-        self.save_progress("Get Task List Successfully")
+        self.send_progress("Get Task List Successfully")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_gettaskstatistics(self, param):
@@ -337,7 +346,7 @@ class RidgebotConnector(BaseConnector):
 
         # Return success, no need to set the message, only the status
         # BaseConnector will create a textual message based off of the summary dictionary
-        self.save_progress("Get Task statistics Successfully")
+        self.send_progress("Get Task statistics Successfully")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_generatedownloadreport(self, param):
@@ -411,8 +420,10 @@ class RidgebotConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR, "Unable to remove temporary directory"), None
 
         if vault_ret_dict['succeeded']:
+            self.send_progress("Generate Report Successfully")
             return action_result.set_status(phantom.APP_SUCCESS, "Write file to Vault"), None
         else:
+            self.error_print("Generate Report Failed to write to Vault")
             return action_result.set_status(phantom.APP_ERROR, "Fail to Write file to Vault"), None
 
     def handle_action(self, param):
