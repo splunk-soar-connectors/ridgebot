@@ -38,7 +38,7 @@
             "action": "test connectivity",
             "identifier": "test_connectivity",
             "description": "Validate the asset configuration for connectivity using supplied configuration",
-            "verbose": "",
+            "verbose": "Check Asset Connectivity.",
             "type": "test",
             "read_only": true,
             "parameters": {},
@@ -49,7 +49,7 @@
             "action": "create task",
             "identifier": "createtask",
             "description": "Create Task",
-            "verbose": "Create Penetration task.",
+            "verbose": "Create Penetration Task.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -138,7 +138,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "get task statistics",
+            "action": "get data statistics",
             "identifier": "gettaskstatistics",
             "description": "Get Task Result with Attack Surface, Vulnerablity and Risk Statistics",
             "verbose": "Get Task Statistics.",
@@ -224,7 +224,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "stop task",
+            "action": "cancel a task",
             "identifier": "stoptask",
             "description": "Stop a unfinished task",
             "verbose": "Stop a unfinished Task.",
@@ -275,7 +275,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "get task info",
+            "action": "get detail task info",
             "identifier": "gettaskinfo",
             "description": "Get Task Info for a Task",
             "verbose": "Get Task Info for a Task.",
@@ -332,8 +332,7 @@
             "verbose": "Get task info lists.",
             "type": "generic",
             "read_only": false,
-            "parameters": {
-            },
+            "parameters": {},
             "output": [
                 {
                     "data_path": "action_result.status",
@@ -360,10 +359,10 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "generate and download report",
+            "action": "create report",
             "identifier": "generatedownloadreport",
             "description": "Generate and Download Report with Task ID",
-            "verbose": "Generate and Download Report",
+            "verbose": "Generate and Download Report.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -444,5 +443,32 @@
             },
             "versions": "EQ(*)"
         }
-    ]
+    ],
+    "pip_dependencies": {
+        "wheel": [
+            {
+                "module": "certifi",
+                "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl"
+            },
+            {
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
+            },
+            {
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.8-py2.py3-none-any.whl"
+            }
+        ]
+    },
+    "pip39_dependencies": {
+        "wheel": []
+    }
 }
