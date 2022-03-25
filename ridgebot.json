@@ -224,7 +224,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "cancel a task",
+            "action": "cancel task",
             "identifier": "stoptask",
             "description": "Stop a unfinished task",
             "verbose": "Stop a unfinished Task.",
@@ -275,7 +275,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "get detail task info",
+            "action": "get task info",
             "identifier": "gettaskinfo",
             "description": "Get Task Info for a Task",
             "verbose": "Get Task Info for a Task.",
@@ -326,7 +326,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "get task info lists",
+            "action": "list tasks",
             "identifier": "gettaskinfolists",
             "description": "Get Task Info Lists",
             "verbose": "Get task info lists.",
