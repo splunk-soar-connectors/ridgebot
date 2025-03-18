@@ -1,202 +1,229 @@
-[comment]: # "Auto-generated SOAR connector documentation"
 # RidgeBot
 
-Publisher: RidgeSecurity  
-Connector Version: 1\.0\.1  
-Product Vendor: RidgeSecurity  
-Product Name: RidgeBot  
-Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 5\.1\.0  
+Publisher: RidgeSecurity \
+Connector Version: 1.0.1 \
+Product Vendor: RidgeSecurity \
+Product Name: RidgeBot \
+Minimum Product Version: 5.1.0
 
 Support RidgeBot Task Creation and Result Retrieval
 
-# Splunk> Phantom
+### Configuration variables
 
-Welcome to the open-source repository for Splunk> Phantom's ridgebot App.
-
-Please have a look at our [Contributing Guide](https://github.com/Splunk-SOAR-Apps/.github/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing, raising issues, or learning more about open-source Phantom apps.
-
-## Legal and License
-
-This Phantom App is licensed under the Apache 2.0 license. Please see our [Contributing Guide](https://github.com/Splunk-SOAR-Apps/.github/blob/main/.github/CONTRIBUTING.md#legal-notice) for further details.
-
-
-### Configuration Variables
-The below configuration variables are required for this Connector to operate.  These variables are specified when configuring a RidgeBot asset in SOAR.
+This table lists the configuration variables required to operate RidgeBot. These variables are specified when configuring a RidgeBot asset in Splunk SOAR.
 
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
-**base\_url** |  required  | string | API Base URL
-**auth\_token** |  required  | password | User Token for API execution
+**base_url** | required | string | API Base URL |
+**auth_token** | required | password | User Token for API execution |
 
-### Supported Actions  
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration  
-[create task](#action-create-task) - Create Task  
-[get data statistics](#action-get-data-statistics) - Get Task Result with Attack Surface, Vulnerablity and Risk Statistics  
-[cancel task](#action-cancel-task) - Stop a unfinished task  
-[get task info](#action-get-task-info) - Get Task Info for a Task  
-[list tasks](#action-list-tasks) - Get Task Info Lists  
-[create report](#action-create-report) - Generate and Download Report with Task ID  
+### Supported Actions
+
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
+[create task](#action-create-task) - Create Task \
+[get data statistics](#action-get-data-statistics) - Get Task Result with Attack Surface, Vulnerablity and Risk Statistics \
+[cancel task](#action-cancel-task) - Stop a unfinished task \
+[get task info](#action-get-task-info) - Get Task Info for a Task \
+[list tasks](#action-list-tasks) - Get Task Info Lists \
+[create report](#action-create-report) - Generate and Download Report with Task ID
 
 ## action: 'test connectivity'
+
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test**  
+Type: **test** \
 Read only: **True**
 
-Check Asset Connectivity\.
+Check Asset Connectivity.
 
 #### Action Parameters
+
 No parameters are required for this action
 
 #### Action Output
-No Output  
+
+No Output
 
 ## action: 'create task'
+
 Create Task
 
-Type: **generic**  
+Type: **generic** \
 Read only: **False**
 
-Create Penetration Task\.
+Create Penetration Task.
 
 #### Action Parameters
+
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**name** |  required  | Task Name | string | 
-**targets** |  required  | Task Target List | string | 
-**template\_id** |  required  | Template Id | numeric | 
+**name** | required | Task Name | string | |
+**targets** | required | Task Target List | string | |
+**template_id** | required | Template Id | numeric | |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.name | string | 
-action\_result\.parameter\.targets | string | 
-action\_result\.parameter\.template\_id | numeric | 
-action\_result\.status | string | 
-action\_result\.data\.\*\.data\.task\_id | string | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.name | string | | |
+action_result.parameter.targets | string | | |
+action_result.parameter.template_id | numeric | | |
+action_result.status | string | | success failed |
+action_result.data.\*.data.task_id | string | | |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
 
 ## action: 'get data statistics'
+
 Get Task Result with Attack Surface, Vulnerablity and Risk Statistics
 
-Type: **generic**  
+Type: **generic** \
 Read only: **False**
 
-Get Task Statistics\.
+Get Task Statistics.
 
 #### Action Parameters
+
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**task\_id** |  required  | Task Id | string | 
+**task_id** | required | Task Id | string | |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.task\_id | string | 
-action\_result\.data\.\*\.data\.risk\.risk\_number | string | 
-action\_result\.data\.\*\.data\.vul\.vul\_number | string | 
-action\_result\.data\.\*\.data\.vul\.vul\_high | string | 
-action\_result\.data\.\*\.data\.vul\.vul\_middle | string | 
-action\_result\.data\.\*\.data\.security\_module\.safety\_index | string | 
-action\_result\.status | string | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.task_id | string | | |
+action_result.data.\*.data.risk.risk_number | string | | |
+action_result.data.\*.data.vul.vul_number | string | | |
+action_result.data.\*.data.vul.vul_high | string | | |
+action_result.data.\*.data.vul.vul_middle | string | | |
+action_result.data.\*.data.security_module.safety_index | string | | |
+action_result.status | string | | success failed |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
 
 ## action: 'cancel task'
+
 Stop a unfinished task
 
-Type: **generic**  
+Type: **generic** \
 Read only: **False**
 
-Stop a unfinished Task\.
+Stop a unfinished Task.
 
 #### Action Parameters
+
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**task\_id** |  required  | Task Id | string | 
+**task_id** | required | Task Id | string | |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.task\_id | string | 
-action\_result\.data\.\*\.message\.key | string | 
-action\_result\.status | string | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.task_id | string | | |
+action_result.data.\*.message.key | string | | |
+action_result.status | string | | success failed |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
 
 ## action: 'get task info'
+
 Get Task Info for a Task
 
-Type: **generic**  
+Type: **generic** \
 Read only: **False**
 
-Get Task Info for a Task\.
+Get Task Info for a Task.
 
 #### Action Parameters
+
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**task\_id** |  required  | Task Id | string | 
+**task_id** | required | Task Id | string | |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.task\_id | string | 
-action\_result\.status | string | 
-action\_result\.data\.\*\.data\.\*\.task\_id | string | 
-action\_result\.data\.\*\.data\.\*\.task\_job\_count | numeric | 
-action\_result\.data\.\*\.data\.\*\.task\_job\_total | numeric | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.task_id | string | | |
+action_result.status | string | | success failed |
+action_result.data.\*.data.\*.task_id | string | | |
+action_result.data.\*.data.\*.task_job_count | numeric | | |
+action_result.data.\*.data.\*.task_job_total | numeric | | |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
 
 ## action: 'list tasks'
+
 Get Task Info Lists
 
-Type: **generic**  
+Type: **generic** \
 Read only: **False**
 
-Get task info lists\.
+Get task info lists.
 
 #### Action Parameters
+
 No parameters are required for this action
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.status | string | 
-action\_result\.data\.\*\.message\.key | string | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.status | string | | success failed |
+action_result.data.\*.message.key | string | | |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
 
 ## action: 'create report'
+
 Generate and Download Report with Task ID
 
-Type: **generic**  
+Type: **generic** \
 Read only: **False**
 
-Generate and Download Report\.
+Generate and Download Report.
 
 #### Action Parameters
+
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**task\_id** |  required  | Task Id | string | 
-**type** |  required  | Report Type | string | 
-**report\_name** |  required  | Report Name | string | 
+**task_id** | required | Task Id | string | |
+**type** | required | Report Type | string | |
+**report_name** | required | Report Name | string | |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.task\_id | string | 
-action\_result\.parameter\.type | string | 
-action\_result\.parameter\.report\_name | string | 
-action\_result\.data\.\*\.data\.report | string | 
-action\_result\.status | string | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric | 
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.task_id | string | | |
+action_result.parameter.type | string | | |
+action_result.parameter.report_name | string | | |
+action_result.data.\*.data.report | string | | |
+action_result.status | string | | success failed |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
+
+______________________________________________________________________
+
+Auto-generated Splunk SOAR Connector documentation.
+
+Copyright 2025 Splunk Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and limitations under the License.
