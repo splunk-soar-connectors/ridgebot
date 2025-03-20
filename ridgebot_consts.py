@@ -1,6 +1,6 @@
 # File: ridgebot_consts.py
 #
-# Copyright (c) RidgeSecurity, 2022
+# Copyright (c) RidgeSecurity, 2022-2025
 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
