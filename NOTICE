@@ -1,9 +1,29 @@
 Splunk SOAR RidgeBot
-Copyright (c) RidgeSecurity, 2022
+Copyright (c) RidgeSecurity, 2022-2025
 
-Third-party Software Attributions:
+Third Party Software Attributions:
 
-Library: requests
+Name: certifi
+Version: 2025.1.31
+Author: Kenneth Reitz
+License: MPL-2.0
+
+Name: charset-normalizer
+Version: 2.0.12
+Author: Ahmed TAHRI @Ousret
+License: MIT
+
+Name: idna
+Version: 3.10
+Author:
+License:
+
+Name: requests
 Version: 2.27.1
+Author: Kenneth Reitz
 License: Apache 2.0
-MMXVIX. A Kenneth Reitz Project
+
+Name: urllib3
+Version: 1.26.20
+Author: Andrey Petrov
+License: MIT
