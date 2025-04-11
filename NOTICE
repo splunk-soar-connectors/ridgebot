@@ -1,9 +1,2 @@
-Splunk SOAR RidgeBot
-Copyright (c) RidgeSecurity, 2022
-
-Third-party Software Attributions:
-
-Library: requests
-Version: 2.27.1
-License: Apache 2.0
-MMXVIX. A Kenneth Reitz Project
+Splunk SOAR App: RidgeBot
+Copyright (c) RidgeSecurity, 2022-2025
