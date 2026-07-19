@@ -1,10 +1,10 @@
 # RidgeBot
 
-Publisher: RidgeSecurity \
-Connector Version: 1.0.2 \
-Product Vendor: RidgeSecurity \
-Product Name: RidgeBot \
-Minimum Product Version: 5.1.0
+Publisher: RidgeSecurity <br>
+Connector Version: 1.0.2 <br>
+Product Vendor: RidgeSecurity <br>
+Product Name: RidgeBot <br>
+Minimum Product Version: 6.3.0
 
 Support RidgeBot Task Creation and Result Retrieval
 
@@ -16,22 +16,23 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
 **base_url** | required | string | API Base URL |
 **auth_token** | required | password | User Token for API execution |
+**verify_server_cert** | optional | boolean | Verify server certificate |
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
-[create task](#action-create-task) - Create Task \
-[get data statistics](#action-get-data-statistics) - Get Task Result with Attack Surface, Vulnerablity and Risk Statistics \
-[cancel task](#action-cancel-task) - Stop a unfinished task \
-[get task info](#action-get-task-info) - Get Task Info for a Task \
-[list tasks](#action-list-tasks) - Get Task Info Lists \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration <br>
+[create task](#action-create-task) - Create Task <br>
+[get data statistics](#action-get-data-statistics) - Get Task Result with Attack Surface, Vulnerablity and Risk Statistics <br>
+[cancel task](#action-cancel-task) - Stop a unfinished task <br>
+[get task info](#action-get-task-info) - Get Task Info for a Task <br>
+[list tasks](#action-list-tasks) - Get Task Info Lists <br>
 [create report](#action-create-report) - Generate and Download Report with Task ID
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 Check Asset Connectivity.
@@ -48,7 +49,7 @@ No Output
 
 Create Task
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Create Penetration Task.
@@ -78,7 +79,7 @@ summary.total_objects_successful | numeric | | |
 
 Get Task Result with Attack Surface, Vulnerablity and Risk Statistics
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Get Task Statistics.
@@ -108,7 +109,7 @@ summary.total_objects_successful | numeric | | |
 
 Stop a unfinished task
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Stop a unfinished Task.
@@ -134,7 +135,7 @@ summary.total_objects_successful | numeric | | |
 
 Get Task Info for a Task
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Get Task Info for a Task.
@@ -162,7 +163,7 @@ summary.total_objects_successful | numeric | | |
 
 Get Task Info Lists
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Get task info lists.
@@ -185,7 +186,7 @@ summary.total_objects_successful | numeric | | |
 
 Generate and Download Report with Task ID
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Generate and Download Report.
@@ -215,7 +216,7 @@ ______________________________________________________________________
 
 Auto-generated Splunk SOAR Connector documentation.
 
-Copyright 2025 Splunk Inc.
+Copyright 2026 Splunk Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
