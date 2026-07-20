@@ -1,6 +1,6 @@
 # File: ridgebot_connector.py
 #
-# Copyright (c) RidgeSecurity, 2022-2025
+# Copyright (c) RidgeSecurity, 2022-2026
 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -135,7 +135,7 @@ class RidgebotConnector(BaseConnector):
         url = self._base_url + endpoint
 
         try:
-            r = request_func(url, params=params, headers=headers, json=data, verify=False, stream=stream)
+            r = request_func(url, params=params, headers=headers, json=data, verify=self._verify, stream=stream)
         except Exception as e:
             return RetVal(action_result.set_status(phantom.APP_ERROR, f"Error Connecting to server. Details: {e!s}"), resp_json)
         print(r.status_code)
@@ -357,9 +357,9 @@ class RidgebotConnector(BaseConnector):
             return action_result.get_status()
 
         if report_type == "pdf":
-            filename = report_name + "." + report_type
+            filename = (os.path.basename(report_name) or "ridgebot_report") + "." + report_type
         else:
-            filename = report_name + ".zip"
+            filename = (os.path.basename(report_name) or "ridgebot_report") + ".zip"
 
         # Creating temporary directory and file
         try:
@@ -373,6 +373,8 @@ class RidgebotConnector(BaseConnector):
             os.makedirs(temp_dir)
 
             file_path = os.path.join(temp_dir, filename)
+            if os.path.dirname(os.path.realpath(file_path)) != os.path.realpath(temp_dir):
+                return action_result.set_status(phantom.APP_ERROR, "Invalid report_name"), None
 
             with open(file_path, "wb") as file_obj:
                 for chunk in response.iter_content(chunk_size=128):
@@ -438,6 +440,7 @@ class RidgebotConnector(BaseConnector):
         config = self.get_config()
 
         self._base_url = config.get("base_url")
+        self._verify = config.get("verify_server_cert", True)
 
         return phantom.APP_SUCCESS
 
