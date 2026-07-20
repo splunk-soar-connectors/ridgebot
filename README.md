@@ -1,7 +1,7 @@
 # RidgeBot
 
 Publisher: RidgeSecurity <br>
-Connector Version: 1.0.2 <br>
+Connector Version: 1.0.3 <br>
 Product Vendor: RidgeSecurity <br>
 Product Name: RidgeBot <br>
 Minimum Product Version: 6.3.0

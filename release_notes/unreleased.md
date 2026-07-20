@@ -1,4 +1,1 @@
 **Unreleased**
-
-* Enable TLS certificate validation for RidgeBot API requests
-* Restrict RidgeBot report downloads to their temporary directory
